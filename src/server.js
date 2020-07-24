@@ -2,11 +2,13 @@ const express = require('express');
 const mongoose = require ('mongoose');
 const env = require('../environments/environment');
 const router = require('./router/user')
+const bodyParser = require('body-parser')
 
 class Server {
     app = express();
     
      constructor(){
+         this.useBodyParser();
         this.setConfiguration();
         this.setRouter();
         this.notFoundHandler();
@@ -44,6 +46,11 @@ class Server {
                 statusCode: errStatus
             })
         })
+    }
+
+    useBodyParser(){
+        this.app.use(bodyParser.urlencoded({extended: true}))
+
     }
 }
 

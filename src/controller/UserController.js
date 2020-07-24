@@ -1,8 +1,9 @@
 
 class UserController {
     static  login(req,res,next){
-        const err = new Error('User does not Exist')
-        next(err);
+        console.log(req.body);
+        
+        res.send(req.body)
     }
 }
 
