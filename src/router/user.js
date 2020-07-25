@@ -1,4 +1,7 @@
 const Router = require('express').Router;
+
+const UserValidator = require('../middleware/UserValidator')
+
 const UserController = require('../controller/UserController.js')
 class User{
      router;
@@ -12,10 +15,10 @@ class User{
     }
 
     getUserRoute(){
-        this.router.get('/login' , UserController.login)
     }
     postUserRoute(){
-
+        
+        this.router.post('/signup' , UserValidator.validateUser(), UserController.signup)
     }
 }
 
